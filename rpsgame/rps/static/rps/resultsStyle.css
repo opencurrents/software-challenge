@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+    margin: 0;
+}
+
+section{
+  height: calc(100% - 80px);
+  margin: 0;
+}
+
+
+body { 
+  color: #fff;
+  font-family: sans-serif;
+  font-size: 1.25rem;
+  line-height: 150%;
+  text-align: center;
+}
+
+section {
+  width: 100%;
+}
+
+.header{
+    background-color: #737373;
+    min-height: 80px;
+    position: relative;
+}
+
+article {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  padding: 1rem;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
+
+h1 {
+  font-size: 1.75rem;
+  margin: 0 0 0.75rem 0;
+}
+
+
+#left-half {
+  background-color: #ff4d4d;
+  float: left;
+  width: 50%;
+    height: 100%;
+}
+
+#right-half {
+  background-color: #4d94ff;
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+#left{
+    float:left;
+    width:100px;
+    height: 100%;
+    vertical-align: top;
+    line-height: 80px;
+    font-size: 2em;
+}
+#right{
+    float:right;
+    width:100px;
+    height: 100%;
+    text-align: center;
+    line-height: 80px;
+    font-size: 2em;
+}
+#center{
+    margin:0 auto;
+    width:100px;
+    height: 100%;
+}
+
+#status {
+    position: relative;
+    height:  80px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.round {
+    margin: auto;
+}
+
+#reset-button {
+    background-color: #595959;
+    border-style: none;
+    color: white;
+    font-size: .8em;
+}
+
+#reset-button:hover {
+    background-color: #8c8c8c;
+}
+
+.team-label {
+    color: white;
+    font-size: 2.5em;
+}
+
+.select-button {
+    background-color: #737373;
+    border-style: none;
+    color: white;
+    font-size:1em;
+    width: 90px;
+    height: 30px;
+}
+.select-button:hover {
+    background-color: #4d4d4d;
+}
+
+#return-container{
+	position:absolute;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+}
+
+#return-button {
+	bottom: 10px;
+    position: absolute;
+	transform: translate(-50%, -50%);
+	margin: auto;
+    background-color: #737373;
+    border-style: none;
+    color: white;
+    font-size:0.7em;
+    width: 150px;
+    height: 30px;
+    
+}
+#return-button:hover {
+    background-color: #4d4d4d;
+}
+
+.choice-response {
+	font-size:2em;
+	line-height: 1em;
+}
