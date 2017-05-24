@@ -1,0 +1,67 @@
+<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Rock-Paper-Scissors</title>
+        <meta name="description" content="2-player Rock-Paper-Scissors">
+        {% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'rps/selectStyle.css' %}" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script>
+        //Check server for game state update every second
+        $(document).ready(function(){
+		setInterval(function(){
+			$.ajax({dataType: 'json', type:"GET", url: "{% url 'refresh' %}", success: function(result){
+			if(result.update){
+				location.reload();
+			}
+			}});
+		},1000);
+	});
+	</script>
+</head>
+
+<body>
+<div class="header">
+    <div id="status">
+        <div id="left">{{red_player.score}}</div>
+        <div id="right">{{blue_player.score}}</div>
+        <div id="center">
+            <h1 class="round">Round:</h1>
+            <h1 class="round">{{round.current_round}}</h1>
+            <form action="{% url 'submit' %}" method="post">
+				{% csrf_token %}
+                <input type="submit" value="Reset All" name="reset" class="round" id="reset-button">
+            </form>
+        </div>   
+    </div>
+</div>
+
+<section class="container">
+  <div id="left-half">
+    <article>
+        <h1 class="team-label">Red</h1>
+        <div id="red_group">
+            <form action="{% url 'submit' %}" method="post">
+				{% csrf_token %}
+                <input type="submit" value="Rock" name="red_rock" class="select-button">
+                <input type="submit" value="Paper" name="red_paper" class="select-button">
+                <input type="submit" value="Scissors" name="red_scissors" class="select-button">
+			</form>
+        </div>
+    </article>
+  </div>
+  <div id="right-half">
+    <article>
+        <h1 class="team-label">Blue</h1>
+        <div class="blue_group">
+            <form action="{% url 'submit' %}" method="post">
+				{% csrf_token %}
+                <input type="submit" value="Rock" name="blue_rock" class="select-button">
+                <input type="submit" value="Paper" name="blue_paper" class="select-button">
+                <input type="submit" value="Scissors" name="blue_scissors" class="select-button">
+            </form>
+        </div>
+    </article>
+  </div>
+</section>
+</body>

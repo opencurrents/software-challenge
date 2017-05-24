@@ -1,22 +1,10 @@
 # Rock-Scissors-Paper Game
 
-## Problem Statement
-As part of the software challenge, you'll need to implement this popular game in 2-player mode. Each player should be presented a form where they can make a choice between the three available options. Once the player makes their choice, they should be directed to a game status page. For each player the status can be one of the following four:
+This is the completed version of my submission to the challenge. I created the app in Django with the usual Python and wrote the 
+templates/pages with HTML/CSS and a bit of JavaScript(AJAX). For the most part, I'm pretty happy with the outcome. I'm pretty new to 
+Django so there were a few things I had to brush up on for this project. I still haven't gotten around to diving into JavaScript so the 
+JavaScript I did write is fairly limited. With some more time, I would have liked to change how the forms were submitted to the server as 
+I think my method could be improved on. Furthermore, the AJAX I used simply checked for server changes and refreshed the entire page when
+needed. A more elegant solution would update individual elements instead of reloading the whole page.
 
-1. Other player has not made their choice yet
-2. You won the game (other player has made a choice of X)
-3. You lost the game (other player has made a choice of Y)
-4. The game resulted in a tie (other player has made the same choice as yours)
-
-## Implementation Details
-We'd like this to be implemented as a web application. You are free to implement it using a web development framework of your choice. Depending on your area of expertise you may choose to implement the front end component, the back end component or both. For example, if you are a full-stack generalist or back end developer with some basic HTML knowledge, you may choose to implement the entire functionality of the game. If you are only familiar with Frontend / UI, we'd expect to see something impressive for the user interface.
-
-If you choose an event-driven framework like Meteor or ReactJS, it'd be nice if the status page would reflect the actual status of the game without the need for refreshing. For example, once the first player makes their choice, they would be directed to the status page with the outcome #1. Once the second player follows up with their choice, the status page of player 1 will be automatically updated to one of #2 - #4.
-
-## Submission Details
-To start on your solution, please fork and clone this repository. Once you are finished, please submit your solution as a Pull Request to this repository from your fork. Do not merge the Pull Request.
-
-## Bonus
-To gain extra credit, consider implementing persistent game score. In other words, every time the two players play a game, the score is adjusted the same way as in chess (1 point for a win, 0 points for a loss, 1/2 point for a draw). The score should be present at all times on both the choice selection and the game status pages.
-
-Good luck!
+The select page is http://.../rps/ when running the Django dev server.
