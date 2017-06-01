@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Game Status</title>
+	</head>
+
+	<body bgcolor="#E6E6FA">
+	
+		<p>You picked:</p> <p id="playerResult"></p> <p id="playerImage"></p>
+
+		<p>Your opponent picked:</p> <p id="opponentResult"></p> <p id="opponentImage"></p>
+		
+		<script>
+		// Check browser support of localStorage
+		if (typeof(Storage) !== "undefined") 
+		{
+			//retrieve choice from selection page
+			document.getElementById("playerResult").innerHTML = localStorage.getItem("choice");
+		} 
+		else 
+		{
+			document.getElementById("playerResult").innerHTML = "Sorry, your browser does not support Web Storage...";
+		}
+		
+		//generate a random selection for the computer opponent
+		var randomNumber = Math.floor((Math.random() * 3) + 1); 
+		var randomSelection = "";
+		
+		if(randomNumber == 1)
+		{
+			randomSelection = "Rock";
+		}
+		else if(randomNumber == 2)
+		{
+			randomSelection = "Scissors";
+		}
+		else
+		{
+			randomSelection = "Paper";
+		}
+		document.getElementById("opponentResult").innerHTML = randomSelection;
+		
+		//determine the outcome of the game
+		var gameOutcome = "";		
+		if(localStorage.getItem("choice") == "Rock")
+		{
+			//display player choice image
+			document.getElementById("playerImage").innerHTML = '<img src=\'rock.png\'>';
+			
+			if(randomSelection == "Rock")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'rock.gif\' id="img">';
+				document.body.append("Rock vs Rock. This game is a draw; rock on.");
+				gameOutcome = "draw";
+			}
+			else if(randomSelection == "Scissors")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'scissors.gif\' id="img">';
+				document.body.append("Rock vs Scissors. You crushed the opposition!");
+				gameOutcome = "win";
+			}
+			else
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'paper.gif\' id="img">';
+				document.body.append("Rock vs Paper. Inexplicably, you lost.");
+				gameOutcome = "lose";
+			}
+		}
+		
+		else if(localStorage.getItem("choice") == "Scissors")
+		{
+			//display player choice image
+			document.getElementById("playerImage").innerHTML = '<img src=\'scissors.png\'>';
+			
+			if(randomSelection == "Rock")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'rock.gif\' id="img">';
+				document.body.append("Scissors vs Rock. A crushing defeat.");
+				gameOutcome = "lose";
+			}
+			else if(randomSelection == "Scissors")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'scissors.gif\' id="img">';
+				document.body.append("Scissors vs Scissors. This game is a draw. No running with those.");
+				gameOutcome = "draw";
+			}
+			else
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'paper.gif\' id="img">';
+				document.body.append("Scissors vs Paper. Flawless Victory!");
+				gameOutcome = "win";
+			}
+		}
+		
+		else
+		{
+			//display player choice image
+			document.getElementById("playerImage").innerHTML = '<img src=\'paper.png\'>';
+			if(randomSelection == "Rock")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'rock.gif\' id="img">';
+				document.body.append("Paper vs Rock. Take your win and leave.");
+				gameOutcome = "win";
+			}
+			else if(randomSelection == "Scissors")
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'scissors.gif\' id="img">';
+				document.body.append("Paper vs Scissors. Ouch, you lost.");
+				gameOutcome = "lose";
+			}
+			else
+			{
+				document.getElementById("opponentImage").innerHTML = '<img src=\'paper.gif\' id="img">';
+				document.body.append("Paper vs Paper. This game is a draw. Waste of paper.");
+				gameOutcome = "draw";
+			}
+		}
+			
+		//increment appropriate records
+		var winRecord = localStorage.getItem('wins');
+		var loseRecord = localStorage.getItem('losses');
+		var drawRecord = localStorage.getItem('draws');
+		if(gameOutcome == "win")
+		{	
+			winRecord++;
+			localStorage.setItem("wins",winRecord);
+		}
+		else if(gameOutcome == "lose")
+		{	
+			loseRecord++;
+			localStorage.setItem("losses",loseRecord);
+		}
+		else if(gameOutcome == "draw")
+		{
+			drawRecord++;
+			localStorage.setItem("draws",drawRecord);
+		}
+		
+		//display records
+		document.write("<br>");
+		document.write("<br>");
+		document.body.append("Wins: " + localStorage.getItem('wins'));
+		document.write("<br>");
+		document.body.append("Losses: " + localStorage.getItem('losses'));
+		document.write("<br>");
+		document.body.append("Draws: " + localStorage.getItem('draws'));
+		
+		//alter the opponentImage gif source with a timestamp so it reloads every page
+		var img1 = document.getElementById("img");
+		var oldSrc = img1.src;
+		var dt = new Date();
+		img1.src = oldSrc + "?" + dt.getTime();
+		
+		</script>
+
+		<p>Click <a href='selection.html'>here</a> to pick again.</p> 
+		
+	</body>
+</html>
