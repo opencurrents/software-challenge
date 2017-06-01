@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Rock-Scissors-Paper Selection</title>
+	</head>
+
+	<body bgcolor="#E6E6FA">
+	
+		<p>Choose wisely...</p>
+		
+		<img src="RSP.png" alt="graphic" width="180" height="70">
+		<br>
+		<button onclick="updateSelection('Rock')">Rock</button>
+		<button onclick="updateSelection('Scissors')">Scissors</button>
+		<button onclick="updateSelection('Paper')">Paper</button>
+		
+		<p id="result"></p>
+		
+		<p id="next"></p>
+		
+		
+		
+		<script>
+		//This function reflects the player's current choice with a short message. Enables link to next page.
+		function updateSelection(selection) 
+		{
+			//store player choice for retrieval later
+			localStorage.setItem("choice",selection);
+	
+			//confirmation message
+			var message;
+			if(selection == 'Rock')
+			{
+				message="Rock crushes Scissors, but is covered by Paper. Your odds of winning... 1 in 3."
+			}
+			else if(selection == 'Scissors')
+			{
+				message="Scissors cut Paper, but are crushed by Rock. Your odds of winning... 1 in 3."
+			}
+			else if(selection == 'Paper')
+			{
+				message="Paper covers rock, but is cut by Scissors. Your odds of winning... 1 in 3."
+			}
+			
+			document.getElementById("result").innerHTML = message;
+			document.getElementById("next").innerHTML = "<p>Click <a href='status.html'>here</a> when satisfied with your selection.</p>"
+		}
+		
+		//initialize records to 0 if they don't already exist
+		if(localStorage.getItem('wins') == null)
+		{
+			localStorage.setItem('wins',0);
+		}
+		if(localStorage.getItem('losses') == null)
+		{
+			localStorage.setItem('losses',0);
+		}
+		if(localStorage.getItem('draws') == null)
+		{
+			localStorage.setItem('draws',0);
+		}
+		
+		//display records
+		document.body.append("Wins: " + localStorage.getItem('wins'));
+		document.write("<br>");
+		document.body.append("Losses: " + localStorage.getItem('losses'));
+		document.write("<br>");
+		document.body.append("Draws: " + localStorage.getItem('draws'));
+		
+		</script>
+		
+	</body>
+</html>
