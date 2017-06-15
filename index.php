@@ -24,7 +24,7 @@ if(empty($_SESSION['compScore'])) $_SESSION['compScore'] = 0;
   <div class="container">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">OpenCurrents RPS</a>
-      <p class="navbar-text">Created by Hank Coutoumanos</p>
+      <p class="navbar-text">Created by Hank C</p>
     </div>
   </div>
 </nav>
