@@ -1,0 +1,17 @@
+.ri{
+	text-align: center;
+}
+
+input[type="radio"]:checked~div{ color:#ccc; } 
+
+.ri input{
+	display: none;
+}
+
+.ri i{
+	margin-top: 8px;
+}
+
+.c{
+	text-align: center;
+}
